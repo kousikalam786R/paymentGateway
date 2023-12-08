@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <title>Payment Process</title>
+</head>
+
+<body>
+
+
+    <div>
+
+        <button class=" btn btn-outline-danger" id="openModalBtn">Proceed to Payment</button>
+    </div>
+    <!-- First Modal -->
+    <div id="firstModal" class="modal ">
+        <div class="modal-content">
+
+            <label for="exampleInputEmail1" class="form-label">Enter Amount and Select Currency</label>
+            <div>
+
+                <select class="form-select" id="currencySelect">
+                    <option value="Rupee">Rupee</option>
+                    <option value="USD">USD</option>
+                </select>
+            </div>
+            <div class="mt-2">
+                <input type="number" class="form-control" id="amountInput" placeholder="Enter amount">
+                <span style="color: red;" id="amountValidationFeedback"></span>
+
+            </div>
+            <button type="submit" class=" btn btn-primary  mt-2 " onclick="openSecondModal()">Next</button>
+        </div>
+    </div>
+    <!-- Second Modal -->
+    <div id="secondModal" class="modal">
+        <div class="modal-content">
+            <h2>Test:</h2>
+            <div class="showAmount mx-3" style="font-size: large; font-weight: bold;">
+                Amount To Pay:
+                <span id="displayAmount"></span>
+                <span id="displayCurrency"></span>
+            </div>
+
+
+            <label for="gatewaySelect">Select Gateway:</label>
+            <label>
+                <input class="form-check-input" type="radio" name="options" value="option1" checked>
+                Payment Gateway 1
+
+                <div class="input-group mb-3">
+                    <select id="dialCodeSelect">
+                        <option value="+91">+91(IN)</option>
+                        <option value="+44">+44 (UK)</option>
+
+                    </select>&nbsp;
+                    <input class="form-control" type="text" id="mobileNumberInput" placeholder="Enter mobile number"
+                        title="Please enter a valid 10-digit mobile number">
+
+
+                </div>
+                <span style="color: red;" id="mobileNumberValidation"></span>
+            </label>
+            <label>
+                <input type="radio" name="options" value="option1">
+                Payment Gateway 2
+            </label>
+            <label>
+                <input type="radio" name="options" value="option2">
+                Payment Gateway 3
+            </label>
+
+
+            <button class="btn btn-primary " onclick="openThirdModal()">Next</button>
+        </div>
+    </div>
+    <!-- Third Modal -->
+    <div id="thirdModal" class="modal" style="height: 600px;">
+        <div class="modal-content">
+
+            <h3>Review and Confirm</h3>
+            <div class="form-floating ">
+                <textarea for="purposeInput" class="form-control" placeholder="Leave a comment here"
+                    id="purposeInput"></textarea>
+
+            </div>
+            <div class="mx-3 my-3">
+                <p><strong> Phone Number:</strong> <span id="displayDialCode"></span> <span
+                        id="displayPhoneNumber"></span>
+                </p>
+            </div>
+
+
+            <!-- <div class="d-none alert alert-info" id="alertBox" role="alert">
+                A simple info alert—check it out!
+            </div> -->
+
+
+            <div class="d-flex">
+
+                <button class="btn btn-danger w-30 mx-3" onclick="cancelPayment()">Cancel Payment</button>
+
+                <button class="btn btn-success w-30" onclick="completePayment()">Complete Payment</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
